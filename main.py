@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-SIZE = (5, 5)
-IMSHOW_ARGS = {"vmin": 0, "vmax": 255, "cmap": "grey"}
+SIZE = (100, 100)
+IMSHOW_ARGS = {"vmin": 0, "vmax": 255, "cmap": "gray"}
 
 
 def ex1():
-    array_1d = np.array([1, 2, 3, 4, 5, 6], dtype=np.uint8)
+    array_1d = np.array([1, 2, 3, 4, 5], dtype=np.uint8)
     array_2d = np.array([[1, 2, 3], [4, 5, 6]])
 
     print(f"array_1d: {array_1d}, shape: {array_1d.shape}, dtype: {array_1d.dtype}")
@@ -15,8 +15,8 @@ def ex1():
 
 def ex2():
     img = np.zeros(SIZE, dtype=np.uint8)
-    img[77, 77] = 1
-    plt.imshow(img, cmap="grey")
+    img[35, 77] = 255
+    plt.imshow(img, cmap="gray")
     plt.show()
 
 
@@ -42,9 +42,20 @@ def ex5(img, brightness, contrast):
     return img
 
 
+def ex7(img):
+    img = img.copy()
+    y = 20
+    x = 30
+    h = 40
+    w = 50
+    img[y : y + h, x : x + w] = 255
+    return img
+
+
 if __name__ == "__main__":
     img, _ = ex4(False)
     _, axes = plt.subplots(1, 2)
     axes[0].imshow(img, **IMSHOW_ARGS)
-    axes[1].imshow(ex5(img, 100, 1.2), **IMSHOW_ARGS)
+    # axes[1].imshow(ex5(img,100,1.2), **IMSHOW_ARGS)
+    axes[1].imshow(ex7(img), **IMSHOW_ARGS)
     plt.show()
