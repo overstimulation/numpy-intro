@@ -17,5 +17,11 @@ def ex2():
     plt.show()
 
 
+def ex3():
+    img = np.random.randint(0, 256, size=(100, 100))
+    plt.imshow(img, cmap="gray")
+    plt.show()
+
+
 if __name__ == "__main__":
-    ex2()
+    ex3()
