@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -9,5 +10,12 @@ def ex1():
     print(f"array_2d: {array_2d}, shape: {array_2d.shape}, dtype: {array_2d.dtype}")
 
 
+def ex2():
+    img = np.zeros((100, 100), dtype=np.uint8)
+    img[77, 77] = 1
+    plt.imshow(img, cmap="grey")
+    plt.show()
+
+
 if __name__ == "__main__":
-    ex1()
+    ex2()
