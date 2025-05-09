@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-SIZE = (100, 100)
+SIZE = (5, 5)
+IMSHOW_ARGS = {"vmin": 0, "vmax": 255, "cmap": "grey"}
 
 
 def ex1():
@@ -27,14 +28,23 @@ def ex3():
 
 def ex4(show=False):
     img_normal = np.random.normal(loc=127, scale=1, size=SIZE)
-    img_uniform = np.random.randint(0, 256, size=SIZE)
-    _, (ax_normal, ax_uniform) = plt.subplots(1, 2)
+    img_uniform = np.random.randint(0, 256, size=SIZE, dtype=np.uint8)
     if show:
-        ax_normal.imshow(img_normal, cmap="grey")
-        ax_uniform.imshow(img_uniform, cmap="grey")
+        _, (ax_normal, ax_uniform) = plt.subplots(1, 2)
+        ax_normal.imshow(img_normal)
+        ax_uniform.imshow(img_uniform)
         plt.show()
-    return img_normal, img_uniform
+    return img_uniform, img_normal
+
+
+def ex5(img, brightness, contrast):
+    img = np.clip(img.copy().astype(np.float32) * contrast + brightness, 0, 255).astype(np.uint8)
+    return img
 
 
 if __name__ == "__main__":
-    ex4()
+    img, _ = ex4(False)
+    _, axes = plt.subplots(1, 2)
+    axes[0].imshow(img, **IMSHOW_ARGS)
+    axes[1].imshow(ex5(img, 100, 1.2), **IMSHOW_ARGS)
+    plt.show()
