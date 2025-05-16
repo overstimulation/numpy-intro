@@ -1,4 +1,5 @@
 import math
+
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -74,13 +75,19 @@ def ex10():
     plt.show()
 
 
+def ex11():
+    freq = 5
+    x = np.linspace(0, math.pi * 2 * freq, 100)
+    xx, yy = np.meshgrid(x, x)
+    xx = np.sin(xx)
+    return xx
+
+
 if __name__ == "__main__":
-    ex10()
-    exit(0)
     img, _ = ex4(False)
     _, axes = plt.subplots(1, 2)
     # axes[1].imshow(ex5(img,100,1.2), **IMSHOW_ARGS)
     # img_with_rect = ex7(img)
-    axes[0].imshow(ex9(), **IMSHOW_ARGS)
+    axes[0].imshow(ex11())
     # axes[1].imshow(ex8(img_with_rect), **IMSHOW_ARGS)
     plt.show()
