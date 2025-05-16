@@ -91,11 +91,20 @@ def ex12():
     return yy
 
 
+def ex13():
+    freq = 5
+    x = np.linspace(0, np.pi * 2 * freq, 100)
+    xx, yy = np.meshgrid(x, x)
+    xx = np.sin(xx)
+    yy = np.sin(yy)
+    return (xx + yy) * 255 + 127
+
+
 if __name__ == "__main__":
     img, _ = ex4(False)
     _, axes = plt.subplots(1, 2)
     # axes[1].imshow(ex5(img,100,1.2), **IMSHOW_ARGS)
     # img_with_rect = ex7(img)
-    axes[0].imshow(ex11())
+    axes[0].imshow(ex13(), **IMSHOW_ARGS)
     # axes[1].imshow(ex8(img_with_rect), **IMSHOW_ARGS)
     plt.show()
