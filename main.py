@@ -83,6 +83,14 @@ def ex11():
     return xx
 
 
+def ex12():
+    freq = 5
+    x = np.linspace(0, np.pi * 2 * freq, 100)
+    xx, yy = np.meshgrid(x, x)
+    yy = np.sin(yy)
+    return yy
+
+
 if __name__ == "__main__":
     img, _ = ex4(False)
     _, axes = plt.subplots(1, 2)
